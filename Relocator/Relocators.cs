@@ -195,9 +195,14 @@ namespace Relocator
                     File.Move(e.FullPath, destinationPath);
                     Console.WriteLine("File: " + e.Name + " moved to " + RelocateSetting.Destination);
                 }
-                else { 
+                else
+                {
                     Console.WriteLine("File: " + e.Name + "not moved to due to duplicate");
                 }
+            }
+            else {
+                File.Move(e.FullPath, destinationPath);
+                Console.WriteLine("File: " + e.Name + " moved to " + RelocateSetting.Destination);
             }
 
         }

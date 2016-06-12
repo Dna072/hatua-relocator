@@ -26,8 +26,8 @@ namespace Relocator
 
             while (!(sentinel.Equals("no")))
             {
-               
-
+                relocateSetting = new RelocateSetting();
+                relocators = new Relocators();
                 try
                 {
                     Console.Write("Enter source directory: ");
