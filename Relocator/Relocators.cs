@@ -10,7 +10,7 @@ namespace Relocator
     public class Relocators
     {
         public RelocateSetting RelocateSetting { get; set; }
-        private List<string> fileExtensions;
+        public List<string> fileExtensions;
 
         
         public Relocators()
@@ -131,12 +131,6 @@ namespace Relocator
         {
             if (RelocateSetting.CanOverride)
             {
-                /*foreach (FileInfo fileInfo in file.Files)
-                {
-                    string destinationPath = file.Destination + "\\" + fileInfo.Name;
-                    fileInfo.MoveTo(destinationPath);
-                }*/
-
                 Parallel.ForEach(file.Files, (movingFile) =>
                 {
                     string destinationPath = RelocateSetting.Destination + "\\" + movingFile.Name;
@@ -144,8 +138,7 @@ namespace Relocator
                 });
             }
             else {
-                /*foreach (FileInfo fileInfo in file.Files)
-                {
+                    Parallel.ForEach(file.Files, (fileInfo)=>{
                     string destinationPath = RelocateSetting.Destination + "\\" + fileInfo.Name;
 
                     try
@@ -155,21 +148,6 @@ namespace Relocator
                     catch (IOException)
                     {
                         //do nothing
-                       
-                    }
-                }*/
-
-                Parallel.ForEach(file.Files, (fileInfo)=>{
-                    string destinationPath = RelocateSetting.Destination + "\\" + fileInfo.Name;
-
-                    try
-                    {
-                        fileInfo.MoveTo(destinationPath);
-                    }
-                    catch (IOException)
-                    {
-                        //do nothing
-
                     }
                 });
             }
